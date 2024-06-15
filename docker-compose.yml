@@ -1,7 +1,19 @@
 version: '3.9'
 services:
-  app:
+  db:
+    image: postgres:13-alpine
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypass
+    ports:
+      - 5432:5432
+  api:
+    command: >
+      bash -c "sleep 10 && alembic revision --autogenerate -m init_db && alembic upgrade head && uvicorn workout_api.main:app --host 0.0.0.0 --port 8000 --log-level info --reload "
     build: .
     ports:
       - 8000:8000
+    depends_on:
+      - db
     

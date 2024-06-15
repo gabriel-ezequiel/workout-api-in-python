@@ -2,3 +2,5 @@ fastAPI
 uvicorn
 sqlalchemy
 pydantic
+asyncpg
+alembic

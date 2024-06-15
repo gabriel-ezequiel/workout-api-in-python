@@ -9,6 +9,9 @@ services:
     ports:
       - 5432:5432
   api:
+    working_dir: /app
+    volumes:
+      - ./:/app
     command: >
       bash -c "sleep 10 && alembic revision --autogenerate -m init_db && alembic upgrade head && uvicorn workout_api.main:app --host 0.0.0.0 --port 8000 --log-level info --reload "
     build: .

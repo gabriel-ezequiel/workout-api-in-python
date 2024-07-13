@@ -8,7 +8,7 @@ class TrainingCenterIn(BaseSchema):
     owner: Annotated[str, Field(description="The owner of the training center", example="John Doe", max_length=30)]
 
 class TrainingCenterAthlete(BaseSchema):
-    nome: Annotated[str, Field(description="The name of the training center", example="Training Center", max_length=20)]
+    name: Annotated[str, Field(description="The name of the training center", example="Training Center", max_length=20)]
 
 class TrainingCenterOut(TrainingCenterIn):
     id: Annotated[UUID4, Field(description="The identifier of the training center")]
